@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-**Docmed 1.0.0** is a Colorlib **WordPress block theme** (full site editing)
+**Docmed 1.0.1** is a Colorlib **WordPress block theme** (full site editing)
 for family clinics, medical centres and doctors' practices. Text domain and
 slug `docmed`. 31 patterns, 14 templates, 3 parts, 8 colour palettes × 5 type
 pairings, 7 starter pages built on activation, visitor dark mode, WooCommerce

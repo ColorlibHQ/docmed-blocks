@@ -44,7 +44,7 @@ defined( 'ABSPATH' ) || exit;
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"docmed-info docmed-icon\u002d\u002dmail"} -->
-<p class="docmed-info docmed-icon--mail"><strong><a href="mailto:hello@docmed.clinic">hello@docmed.clinic</a></strong><br>Send us your questions any time</p>
+<p class="docmed-info docmed-icon--mail"><strong><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></strong><br>Send us your questions any time</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div>
 <!-- /wp:column --></div>

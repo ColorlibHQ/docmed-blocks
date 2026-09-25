@@ -94,7 +94,7 @@ defined( 'ABSPATH' ) || exit;
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"className":"docmed-footer__address","textColor":"on-dark"} -->
-<p class="docmed-footer__address has-on-dark-color has-text-color">200 Green Lane, Suite 4<br>Riverside, CA 92501<br><a href="tel:+15550104400">(555) 010-4400</a><br><a href="mailto:hello@docmed.clinic">hello@docmed.clinic</a></p>
+<p class="docmed-footer__address has-on-dark-color has-text-color">200 Green Lane, Suite 4<br>Riverside, CA 92501<br><a href="tel:+15550104400">(555) 010-4400</a><br><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"textColor":"on-dark","fontSize":"small"} -->

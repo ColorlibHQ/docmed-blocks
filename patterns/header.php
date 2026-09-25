@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 
 <!-- wp:group {"className":"docmed-topbar__contact","style":{"spacing":{"blockGap":"var:preset|spacing|50"}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"right","verticalAlignment":"center"}} -->
 <div class="wp-block-group docmed-topbar__contact"><!-- wp:paragraph {"className":"docmed-topbar__item docmed-icon\u002d\u002dmail","fontSize":"x-small"} -->
-<p class="docmed-topbar__item docmed-icon--mail has-x-small-font-size"><a href="mailto:hello@docmed.clinic">hello@docmed.clinic</a></p>
+<p class="docmed-topbar__item docmed-icon--mail has-x-small-font-size"><a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"className":"docmed-topbar__item docmed-icon\u002d\u002dphone","fontSize":"x-small"} -->
