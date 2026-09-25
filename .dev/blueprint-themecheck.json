@@ -1,0 +1,10 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "preferredVersions": { "php": "8.3", "wp": "latest" },
+  "steps": [
+    { "step": "setSiteOptions", "options": { "blogname": "Docmed", "blogdescription": "Family clinic on Green Lane" } },
+    { "step": "installPlugin", "pluginData": { "resource": "wordpress.org/plugins", "slug": "theme-check" } },
+    { "step": "activateTheme", "themeFolderName": "docmed" },
+    { "step": "login", "username": "admin", "password": "password" }
+  ]
+}

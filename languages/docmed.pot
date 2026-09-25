@@ -1,0 +1,1076 @@
+# Copyright (C) 2026 Colorlib
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Docmed 1.0.0\n"
+"Report-Msgid-Bugs-To: https://colorlib.com/\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Colorlib\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-25T12:14:33+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: docmed\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Docmed"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://colorlib.com/wp/themes/docmed/"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "A block theme for family clinics, medical centres and doctors' practices. Departments, a doctors carousel and grid, patient reviews, tabs, and an appointment request form (department, doctor, date and time) that opens from the header — plus contact and newsletter forms, none of which needs a plugin. Eight colour palettes, five type pairings, visitor dark mode and WooCommerce support. Full site editing throughout."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Colorlib"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://colorlib.com/"
+msgstr ""
+
+#: functions.php:71
+msgid "Title with bar"
+msgstr ""
+
+#: functions.php:72
+msgid "Underlined kicker"
+msgstr ""
+
+#: functions.php:75
+msgid "Card"
+msgstr ""
+
+#: functions.php:76
+msgid "Doctor card"
+msgstr ""
+
+#: functions.php:77
+msgid "Pale panel"
+msgstr ""
+
+#: functions.php:78
+msgid "Form box"
+msgstr ""
+
+#: functions.php:81
+msgid "Outline (on colour)"
+msgstr ""
+
+#: functions.php:82
+msgid "Outline"
+msgstr ""
+
+#: functions.php:85
+msgid "Ticks"
+msgstr ""
+
+#: functions.php:88
+msgid "Plain icons"
+msgstr ""
+
+#: functions.php:89
+msgid "Squares"
+msgstr ""
+
+#. translators: %d: slide number.
+#: functions.php:138
+#, php-format
+msgid "Show review %d"
+msgstr ""
+
+#: functions.php:139
+msgid "Patient reviews"
+msgstr ""
+
+#: functions.php:140
+msgid "Previous doctors"
+msgstr ""
+
+#: functions.php:141
+msgid "More doctors"
+msgstr ""
+
+#: functions.php:155
+msgid "Docmed: sections"
+msgstr ""
+
+#: functions.php:156
+msgid "Full-width sections for building pages."
+msgstr ""
+
+#: functions.php:159
+msgid "Docmed: pages"
+msgstr ""
+
+#: functions.php:160
+msgid "Complete page layouts."
+msgstr ""
+
+#: inc/appointment.php:54
+msgid "Your name"
+msgstr ""
+
+#: inc/appointment.php:60
+msgid "Email address"
+msgstr ""
+
+#: inc/appointment.php:69
+msgid "Department"
+msgstr ""
+
+#: inc/appointment.php:75
+msgid "Doctor"
+msgstr ""
+
+#: inc/appointment.php:79
+msgid "Any available doctor"
+msgstr ""
+
+#: inc/appointment.php:82
+msgid "Preferred date"
+msgstr ""
+
+#: inc/appointment.php:88
+msgid "Preferred time"
+msgstr ""
+
+#: inc/appointment.php:92
+msgid "Morning, 8am to 12pm"
+msgstr ""
+
+#: inc/appointment.php:93
+msgid "Afternoon, 12pm to 4pm"
+msgstr ""
+
+#: inc/appointment.php:94
+msgid "Evening, 4pm to 7pm"
+msgstr ""
+
+#: inc/appointment.php:96
+msgid "Any time"
+msgstr ""
+
+#: inc/appointment.php:100
+msgid "Phone number"
+msgstr ""
+
+#: inc/appointment.php:114
+msgid "Reason for the visit (optional)"
+msgstr ""
+
+#: inc/appointment.php:121
+msgid "Message"
+msgstr ""
+
+#: inc/appointment.php:128
+msgid "Subject"
+msgstr ""
+
+#: inc/appointment.php:133
+msgid "Phone number (optional)"
+msgstr ""
+
+#: inc/appointment.php:176
+msgid "Family medicine"
+msgstr ""
+
+#: inc/appointment.php:177
+msgid "Eye care"
+msgstr ""
+
+#: inc/appointment.php:178
+msgid "Physiotherapy"
+msgstr ""
+
+#: inc/appointment.php:179
+msgid "Dental care"
+msgstr ""
+
+#: inc/appointment.php:180
+msgid "Diagnostics and lab"
+msgstr ""
+
+#: inc/appointment.php:181
+msgid "Dermatology"
+msgstr ""
+
+#: inc/appointment.php:182
+msgid "Children's health"
+msgstr ""
+
+#: inc/appointment.php:196
+msgid "Dr. Robert Hale, family medicine"
+msgstr ""
+
+#: inc/appointment.php:197
+msgid "Dr. Daniel Mensah, family medicine"
+msgstr ""
+
+#: inc/appointment.php:198
+msgid "Dr. Amira Saleh, paediatrics"
+msgstr ""
+
+#: inc/appointment.php:199
+msgid "Dr. Lucia Paredes, optometry"
+msgstr ""
+
+#: inc/appointment.php:200
+msgid "Dr. Sofia Ramos, dentistry"
+msgstr ""
+
+#: inc/appointment.php:201
+msgid "Dr. Elena Novak, dermatology"
+msgstr ""
+
+#: inc/appointment.php:202
+msgid "Karim Haddad, physiotherapy"
+msgstr ""
+
+#: inc/appointment.php:203
+msgid "Dr. Mateo Quispe, diagnostics"
+msgstr ""
+
+#: inc/appointment.php:268
+msgid "Choose one"
+msgstr ""
+
+#: inc/appointment.php:270
+msgid "No preference"
+msgstr ""
+
+#: inc/appointment.php:347
+msgid "Confirm appointment request"
+msgstr ""
+
+#: inc/appointment.php:348
+msgid "Send message"
+msgstr ""
+
+#: inc/appointment.php:349
+msgid "Subscribe"
+msgstr ""
+
+#: inc/appointment.php:378
+msgid "Leave this field empty"
+msgstr ""
+
+#: inc/appointment.php:392
+msgid "Give us a phone number or an email address (or both) so we can confirm the time."
+msgstr ""
+
+#: inc/appointment.php:436
+msgid "Thank you — your request is with our reception team. We will call or email to confirm a time, usually within one working day."
+msgstr ""
+
+#: inc/appointment.php:437
+msgid "Thank you — your message is with us. We will reply by email shortly."
+msgstr ""
+
+#: inc/appointment.php:438
+msgid "Thank you — you are on the list for the next newsletter."
+msgstr ""
+
+#: inc/appointment.php:443
+msgid "Please check the form: every field marked * needs an answer."
+msgstr ""
+
+#: inc/appointment.php:444
+msgid "That email address does not look right."
+msgstr ""
+
+#: inc/appointment.php:445
+msgid "Please give a phone number or an email address, so we can confirm the time."
+msgstr ""
+
+#: inc/appointment.php:446
+msgid "Sorry, that could not be sent. Please call the clinic instead."
+msgstr ""
+
+#: inc/appointment.php:447
+msgid "That form had been open a while and expired. Please send it again."
+msgstr ""
+
+#. translators: %s: site name.
+#: inc/appointment.php:611
+#, php-format
+msgid "[%s] Appointment request"
+msgstr ""
+
+#. translators: %s: site name.
+#: inc/appointment.php:613
+#, php-format
+msgid "[%s] Website message"
+msgstr ""
+
+#. translators: %s: site name.
+#: inc/appointment.php:615
+#, php-format
+msgid "[%s] Newsletter sign-up"
+msgstr ""
+
+#: inc/appointment.php:667
+msgid "Close"
+msgstr ""
+
+#: inc/appointment.php:668
+msgid "Make an Appointment"
+msgstr ""
+
+#: inc/appointment.php:669
+msgid "Confirm"
+msgstr ""
+
+#: inc/front-page-setup.php:33
+msgid "Home"
+msgstr ""
+
+#: inc/front-page-setup.php:38
+msgid "Departments"
+msgstr ""
+
+#: inc/front-page-setup.php:43
+msgid "Doctors"
+msgstr ""
+
+#: inc/front-page-setup.php:48
+msgid "About"
+msgstr ""
+
+#: inc/front-page-setup.php:53
+msgid "Blog"
+msgstr ""
+
+#: inc/front-page-setup.php:58
+msgid "Contact"
+msgstr ""
+
+#: inc/front-page-setup.php:63
+msgid "Appointment"
+msgstr ""
+
+#: inc/front-page-setup.php:321
+msgid "Primary"
+msgstr ""
+
+#: inc/scheme.php:96
+#: inc/scheme.php:129
+msgid "Switch to dark mode"
+msgstr ""
+
+#: inc/scheme.php:97
+msgid "Switch to light mode"
+msgstr ""
+
+#. translators: 1: the update host, 2: the list of values sent, 3: filter name.
+#: inc/updates.php:200
+#, php-format
+msgid "Docmed checks %1$s for updates twice a day and sends %2$s. No personal data and no site name is sent, and the identifier is a one-way hash. Add the %3$s filter to switch it off."
+msgstr ""
+
+#: patterns/appointment-band.php
+msgctxt "Pattern title"
+msgid "Appointment band: call or book"
+msgstr ""
+
+#: patterns/appointment-band.php
+msgctxt "Pattern description"
+msgid "Two halves across the page on blue-washed photographs: a same-day phone line, and the online appointment form."
+msgstr ""
+
+#: patterns/appointment.php
+msgctxt "Pattern title"
+msgid "Appointment request form"
+msgstr ""
+
+#: patterns/appointment.php
+msgctxt "Pattern description"
+msgid "The clinic's hours and phone line beside the appointment request form: department, doctor, date, time, name, phone, email and a note."
+msgstr ""
+
+#: patterns/care-tabs.php
+msgctxt "Pattern title"
+msgid "Tabs: three ways we care"
+msgstr ""
+
+#: patterns/care-tabs.php
+msgctxt "Pattern description"
+msgid "Three tabs on a pale bar — family medicine, the team, same-day care — each opening an icon, a heading, a paragraph and a photograph."
+msgstr ""
+
+#: patterns/contact.php
+msgctxt "Pattern title"
+msgid "Contact: map, form and details"
+msgstr ""
+
+#: patterns/contact.php
+msgctxt "Pattern description"
+msgid "A map across the width, then the message form beside the address, phone and email."
+msgstr ""
+
+#: patterns/departments.php
+msgctxt "Pattern title"
+msgid "Departments: six cards"
+msgstr ""
+
+#: patterns/departments.php
+msgctxt "Pattern description"
+msgid "Six departments on the pale blue ground, each a photograph over a white panel with a title, a line of copy and a booking link."
+msgstr ""
+
+#: patterns/doctors-carousel.php
+msgctxt "Pattern title"
+msgid "Doctors: a sliding row"
+msgstr ""
+
+#: patterns/doctors-carousel.php
+msgctxt "Pattern description"
+msgid "Eight doctors in a row that slides with arrows, four at a time on a wide screen: a portrait over a pale panel with the name and specialty."
+msgstr ""
+
+#: patterns/doctors-grid.php
+msgctxt "Pattern title"
+msgid "Doctors: two rows of four"
+msgstr ""
+
+#: patterns/doctors-grid.php
+msgctxt "Pattern description"
+msgid "All eight doctors in two rows of four: portrait, name and specialty."
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern title"
+msgid "Footer"
+msgstr ""
+
+#: patterns/footer.php
+msgctxt "Pattern description"
+msgid "The template's dark footer: the logo, a line about the clinic and social squares, departments, useful links and the address, with the copyright line beneath."
+msgstr ""
+
+#: patterns/header.php
+msgctxt "Pattern title"
+msgid "Header"
+msgstr ""
+
+#: patterns/header.php
+msgctxt "Pattern description"
+msgid "The template's two-row header: a pale strip with social icons, email and phone, then the logo, the menu and the appointment button."
+msgstr ""
+
+#: patterns/hero.php
+msgctxt "Pattern title"
+msgid "Hero"
+msgstr ""
+
+#: patterns/hero.php
+msgctxt "Pattern description"
+msgid "A doctor on the right of a pale studio photograph, the headline, a line of copy and a button on the left."
+msgstr ""
+
+#: patterns/hidden-404-banner.php
+msgctxt "Pattern title"
+msgid "Not found banner"
+msgstr ""
+
+#: patterns/hidden-404-banner.php
+msgctxt "Pattern description"
+msgid "The banner of the page that is not there."
+msgstr ""
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "404 content"
+msgstr ""
+
+#: patterns/hidden-404.php
+msgctxt "Pattern description"
+msgid "What a visitor sees when nothing is there."
+msgstr ""
+
+#: patterns/hidden-archive-banner.php
+msgctxt "Pattern title"
+msgid "Archive banner"
+msgstr ""
+
+#: patterns/hidden-archive-banner.php
+msgctxt "Pattern description"
+msgid "The banner an archive title sits on."
+msgstr ""
+
+#: patterns/hidden-blog-banner.php
+msgctxt "Pattern title"
+msgid "Blog banner"
+msgstr ""
+
+#: patterns/hidden-blog-banner.php
+msgctxt "Pattern description"
+msgid "The heading for the posts page."
+msgstr ""
+
+#: patterns/hidden-comments.php
+msgctxt "Pattern title"
+msgid "Comments"
+msgstr ""
+
+#: patterns/hidden-comments.php
+msgctxt "Pattern description"
+msgid "The comments and the reply form for a single post."
+msgstr ""
+
+#: patterns/hidden-page-banner.php
+msgctxt "Pattern title"
+msgid "Page banner"
+msgstr ""
+
+#: patterns/hidden-page-banner.php
+msgctxt "Pattern description"
+msgid "The photograph banner a page title sits on."
+msgstr ""
+
+#: patterns/hidden-post-meta.php
+msgctxt "Pattern title"
+msgid "Post meta"
+msgstr ""
+
+#: patterns/hidden-post-meta.php
+msgctxt "Pattern description"
+msgid "Categories, date and author for a single post."
+msgstr ""
+
+#: patterns/hidden-posts-list.php
+msgctxt "Pattern title"
+msgid "Posts list"
+msgstr ""
+
+#: patterns/hidden-posts-list.php
+msgctxt "Pattern description"
+msgid "The post list used by the blog and every archive: a photograph with its date badge, the title, an excerpt, categories and comments."
+msgstr ""
+
+#: patterns/hidden-search-banner.php
+msgctxt "Pattern title"
+msgid "Search banner"
+msgstr ""
+
+#: patterns/hidden-search-banner.php
+msgctxt "Pattern description"
+msgid "The banner search results sit under."
+msgstr ""
+
+#: patterns/hidden-single-banner.php
+msgctxt "Pattern title"
+msgid "Post banner"
+msgstr ""
+
+#: patterns/hidden-single-banner.php
+msgctxt "Pattern description"
+msgid "The photograph banner a post title sits on."
+msgstr ""
+
+#: patterns/latest-news.php
+msgctxt "Pattern title"
+msgid "Latest posts: three cards"
+msgstr ""
+
+#: patterns/latest-news.php
+msgctxt "Pattern description"
+msgid "The three most recent posts as cards: photograph, date, title and a short excerpt."
+msgstr ""
+
+#: patterns/page-about.php
+msgctxt "Pattern title"
+msgid "Page: about"
+msgstr ""
+
+#: patterns/page-about.php
+msgctxt "Pattern description"
+msgid "A complete about page, built from the theme's sections, as the template lays it out."
+msgstr ""
+
+#: patterns/page-appointment.php
+msgctxt "Pattern title"
+msgid "Page: appointment"
+msgstr ""
+
+#: patterns/page-appointment.php
+msgctxt "Pattern description"
+msgid "A complete appointment page, built from the theme's sections, as the template lays it out."
+msgstr ""
+
+#: patterns/page-contact.php
+msgctxt "Pattern title"
+msgid "Page: contact"
+msgstr ""
+
+#: patterns/page-contact.php
+msgctxt "Pattern description"
+msgid "A complete contact page, built from the theme's sections, as the template lays it out."
+msgstr ""
+
+#: patterns/page-departments.php
+msgctxt "Pattern title"
+msgid "Page: departments"
+msgstr ""
+
+#: patterns/page-departments.php
+msgctxt "Pattern description"
+msgid "A complete departments page, built from the theme's sections, as the template lays it out."
+msgstr ""
+
+#: patterns/page-doctors.php
+msgctxt "Pattern title"
+msgid "Page: doctors"
+msgstr ""
+
+#: patterns/page-doctors.php
+msgctxt "Pattern description"
+msgid "A complete doctors page, built from the theme's sections, as the template lays it out."
+msgstr ""
+
+#: patterns/page-home.php
+msgctxt "Pattern title"
+msgid "Page: home"
+msgstr ""
+
+#: patterns/page-home.php
+msgctxt "Pattern description"
+msgid "A complete home page, built from the theme's sections, as the template lays it out."
+msgstr ""
+
+#: patterns/reviews.php
+msgctxt "Pattern title"
+msgid "Patient reviews over a photograph"
+msgstr ""
+
+#: patterns/reviews.php
+msgctxt "Pattern description"
+msgid "Three patients' words in a slider, centred over a darkened photograph of a consultation."
+msgstr ""
+
+#: patterns/services-band.php
+msgctxt "Pattern title"
+msgid "Service band: three cells"
+msgstr ""
+
+#: patterns/services-band.php
+msgctxt "Pattern description"
+msgid "Three services side by side on the brand blue, the middle one a shade deeper, each with an icon, a line of copy and an outlined button."
+msgstr ""
+
+#: patterns/sidebar.php
+msgctxt "Pattern title"
+msgid "Sidebar"
+msgstr ""
+
+#: patterns/sidebar.php
+msgctxt "Pattern description"
+msgid "Search, categories, recent posts, tags and a newsletter sign-up, each in a pale box."
+msgstr ""
+
+#: patterns/welcome.php
+msgctxt "Pattern title"
+msgid "Welcome: two photographs and the clinic's story"
+msgstr ""
+
+#: patterns/welcome.php
+msgctxt "Pattern description"
+msgid "Two overlapping photographs beside a small underlined kicker, a heading, the clinic's story, three ticked points and a button."
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "Base"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "Surface"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "Contrast"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "Muted"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "Primary deep"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "Accent"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "Dark"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "Divider"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "Overlay"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "On dark"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "On primary"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "Ink"
+msgstr ""
+
+#: theme.json
+#: styles/colors/colors-1-sky.json
+#: styles/colors/colors-2-teal.json
+#: styles/colors/colors-3-navy.json
+#: styles/colors/colors-4-sage.json
+#: styles/colors/colors-5-plum.json
+#: styles/colors/colors-6-coral.json
+#: styles/colors/colors-7-midnight.json
+#: styles/colors/colors-8-graphite.json
+msgctxt "Color name"
+msgid "Wash"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Brand"
+msgstr ""
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Banner"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Poppins"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Lora"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "X Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "X Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Heading"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Display"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Colossal"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "20"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "30"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "40"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "50"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "60"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "70"
+msgstr ""
+
+#: theme.json
+msgctxt "Space size name"
+msgid "80"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Card"
+msgstr ""
+
+#: theme.json
+msgctxt "Shadow name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page without banner"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Page with sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "Post without sidebar"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Sidebar"
+msgstr ""
+
+#: styles/colors/colors-1-sky.json
+msgctxt "Style variation name"
+msgid "Sky"
+msgstr ""
+
+#: styles/colors/colors-2-teal.json
+msgctxt "Style variation name"
+msgid "Teal"
+msgstr ""
+
+#: styles/colors/colors-3-navy.json
+msgctxt "Style variation name"
+msgid "Navy"
+msgstr ""
+
+#: styles/colors/colors-4-sage.json
+msgctxt "Style variation name"
+msgid "Sage"
+msgstr ""
+
+#: styles/colors/colors-5-plum.json
+msgctxt "Style variation name"
+msgid "Plum"
+msgstr ""
+
+#: styles/colors/colors-6-coral.json
+msgctxt "Style variation name"
+msgid "Coral"
+msgstr ""
+
+#: styles/colors/colors-7-midnight.json
+msgctxt "Style variation name"
+msgid "Midnight"
+msgstr ""
+
+#: styles/colors/colors-8-graphite.json
+msgctxt "Style variation name"
+msgid "Graphite"
+msgstr ""
+
+#: styles/typography/type-1-poppins.json
+msgctxt "Style variation name"
+msgid "Poppins throughout"
+msgstr ""
+
+#: styles/typography/type-2-lora-poppins.json
+msgctxt "Style variation name"
+msgid "Lora headings, Poppins text"
+msgstr ""
+
+#: styles/typography/type-3-poppins-system.json
+msgctxt "Style variation name"
+msgid "Poppins headings, system text"
+msgstr ""
+
+#: styles/typography/type-4-lora-system.json
+msgctxt "Style variation name"
+msgid "Lora headings, system text"
+msgstr ""
+
+#: styles/typography/type-5-system.json
+msgctxt "Style variation name"
+msgid "System fonts"
+msgstr ""

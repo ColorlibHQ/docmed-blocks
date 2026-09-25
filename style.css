@@ -1,0 +1,1900 @@
+/*
+Theme Name: Docmed
+Theme URI: https://colorlib.com/wp/themes/docmed/
+Author: Colorlib
+Author URI: https://colorlib.com/
+Description: A block theme for family clinics, medical centres and doctors' practices. Departments, a doctors carousel and grid, patient reviews, tabs, and an appointment request form (department, doctor, date and time) that opens from the header — plus contact and newsletter forms, none of which needs a plugin. Eight colour palettes, five type pairings, visitor dark mode and WooCommerce support. Full site editing throughout.
+Requires at least: 6.6
+Tested up to: 7.1
+Requires PHP: 7.4
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Update URI: https://updates.colorlib.com/theme/docmed.json
+Text Domain: docmed
+Tags: blog, full-site-editing, block-patterns, block-styles, template-editing, wide-blocks, accessibility-ready, translation-ready, custom-colors, custom-menu, custom-logo, featured-images, threaded-comments, one-column, two-columns, right-sidebar, rtl-language-support, sticky-post, theme-options
+
+Docmed WordPress Theme, (C) 2026 Colorlib.
+Docmed is distributed under the terms of the GNU GPL v2 or later.
+
+Docmed bundles the following third-party resources:
+
+Poppins and Lora
+License: SIL Open Font License 1.1, https://openfontlicense.org/
+Source: https://fontsource.org/
+
+Tabler Icons
+License: MIT, https://github.com/tabler/tabler-icons/blob/main/LICENSE
+Source: https://tabler.io/icons
+
+Photographs
+License: Pexels License
+Source: Pexels; readme.txt lists each photograph's page
+*/
+
+/*
+ * A block theme styles itself from theme.json. What lives here is what
+ * theme.json cannot express: the component styles behind the block style
+ * variations registered in functions.php, the header's layout and sticky
+ * behaviour, the icons, the hover states and the few layout corrections a
+ * full-width design needs.
+ *
+ * This file is also the editor stylesheet (add_editor_style), so a card, a
+ * doctor or an icon looks the same while it is being edited.
+ *
+ * Every colour is a palette variable, which is what lets all eight palettes,
+ * and dark mode, restyle every component.
+ */
+
+:root {
+	/* The pale contact strip above the header, which scrolls away while the
+	   row beneath it stays (see the header). */
+	--docmed-topbar-h: 3rem;
+	/* An edge a control needs to be seen by (WCAG 1.4.11, 3:1): half the text
+	   colour into the page. 45% measured 2.91:1 in an earlier theme. */
+	--docmed-edge: color-mix(in srgb, var(--wp--preset--color--contrast) 50%, var(--wp--preset--color--base));
+}
+
+@media (max-width: 599px) {
+	:root {
+		--docmed-topbar-h: 0px;
+	}
+}
+
+/* ==========================================================================
+   Screen reader text
+   ========================================================================== */
+
+.screen-reader-text {
+	border: 0;
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+	background-color: var(--wp--preset--color--base);
+	clip-path: none;
+	color: var(--wp--preset--color--contrast);
+	display: block;
+	height: auto;
+	left: 6px;
+	padding: 15px 23px 14px;
+	top: 7px;
+	width: auto;
+	z-index: 100000;
+}
+
+/* ==========================================================================
+   Layout rhythm
+
+   WordPress separates the top-level pieces of a page — header, main, footer —
+   and every full-width section inside a page's content with the root block
+   gap. On a design built from bands, that gap is a strip of bare page between
+   every pair of sections. Sections carry their own padding, so they meet edge
+   to edge instead.
+   ========================================================================== */
+
+.wp-site-blocks > * {
+	margin-block-start: 0;
+}
+
+.wp-block-post-content > .alignfull + .alignfull {
+	margin-block-start: 0;
+}
+
+/*
+ * A page built from sections needs no padding of its own. A page of ordinary
+ * paragraphs still needs room to breathe, so the page templates pad their
+ * content only where it does not start or end with a full-width section.
+ */
+.docmed-page-content:not(:has(> .alignfull:first-child)) {
+	padding-top: var(--wp--preset--spacing--80);
+}
+
+.docmed-page-content:not(:has(> .alignfull:last-child)) {
+	padding-bottom: var(--wp--preset--spacing--80);
+}
+
+/* An <iframe> is inline, and auto margins do not centre an inline box. */
+.docmed-map {
+	display: block;
+}
+
+a {
+	text-underline-offset: 0.18em;
+}
+
+img {
+	height: auto;
+}
+
+/* ==========================================================================
+   Header
+
+   Two rows, as the template has it: a pale strip with the social icons, the
+   email address and the phone number, then the logo, the menu and the
+   appointment button on white. The whole header is sticky with a negative
+   top as tall as the strip, so the strip scrolls away and the main row stays
+   at the top of the screen (assets/js/interactions.js adds its shadow).
+   ========================================================================== */
+
+.wp-site-blocks > header.wp-block-template-part {
+	position: sticky;
+	top: calc(var(--wp-admin--admin-bar--height, 0px) - var(--docmed-topbar-h));
+	z-index: 100;
+}
+
+/* Below 600px the admin bar scrolls away with the page. */
+@media (max-width: 600px) {
+	.wp-site-blocks > header.wp-block-template-part {
+		top: 0;
+	}
+}
+
+.docmed-header > * {
+	margin-block: 0;
+}
+
+.docmed-topbar {
+	height: var(--docmed-topbar-h);
+	padding-top: 0;
+	padding-bottom: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.docmed-topbar > .wp-block-group {
+	width: 100%;
+}
+
+@media (max-width: 599px) {
+	.docmed-topbar {
+		display: none;
+	}
+}
+
+.docmed-topbar__item {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0;
+	color: var(--wp--preset--color--muted);
+}
+
+.docmed-topbar__item::before {
+	content: "";
+	width: 0.875rem;
+	height: 0.875rem;
+	background-color: var(--wp--preset--color--primary);
+	-webkit-mask: var(--docmed-icon) center / contain no-repeat;
+	mask: var(--docmed-icon) center / contain no-repeat;
+}
+
+.docmed-topbar__item a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.docmed-topbar__item a:hover,
+.docmed-topbar__item a:focus-visible {
+	color: var(--wp--preset--color--primary);
+}
+
+.docmed-header__main {
+	padding-top: 1.125rem;
+	padding-bottom: 1.125rem;
+	transition: box-shadow 0.4s ease;
+}
+
+.docmed-header.is-scrolled .docmed-header__main {
+	box-shadow: var(--wp--preset--shadow--header);
+}
+
+.docmed-brand {
+	flex: none;
+}
+
+/*
+ * The site title carries the clinic's mark: a blue rounded square with a
+ * cross, drawn in CSS so it follows the palette. A site with its own logo
+ * uploaded shows the logo and drops the name, as the template's single logo
+ * image does.
+ */
+.docmed-header .wp-block-site-title,
+.docmed-footer__brand.wp-block-site-title {
+	display: flex;
+	align-items: center;
+	gap: 0.625rem;
+	margin: 0;
+	line-height: 1;
+}
+
+.docmed-header .wp-block-site-title::before,
+.docmed-footer__brand.wp-block-site-title::before {
+	content: "";
+	flex: none;
+	width: 2.8125rem;
+	height: 2.8125rem;
+	border-radius: 0.375rem;
+	background:
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5z'/%3E%3C/svg%3E") center / 1.25rem no-repeat,
+		var(--wp--preset--gradient--brand);
+}
+
+.docmed-header .wp-block-site-logo:has(img) ~ .wp-block-site-title {
+	display: none;
+}
+
+.docmed-header .wp-block-site-title a,
+.docmed-footer__brand a {
+	text-decoration: none;
+}
+
+.docmed-footer__brand.wp-block-site-title a {
+	color: var(--wp--preset--color--overlay);
+}
+
+.docmed-nav .wp-block-navigation__container {
+	gap: 0.25rem 1.5rem;
+}
+
+.docmed-header .wp-block-navigation-item__content {
+	color: var(--wp--preset--color--muted);
+	text-decoration: none;
+	transition: color 0.25s ease;
+}
+
+.docmed-header .wp-block-navigation a.wp-block-navigation-item__content:hover,
+.docmed-header .wp-block-navigation a.wp-block-navigation-item__content:focus-visible,
+.docmed-header .wp-block-navigation .current-menu-item > a.wp-block-navigation-item__content {
+	color: var(--wp--preset--color--contrast);
+}
+
+.docmed-header .wp-block-navigation .current-menu-item > a.wp-block-navigation-item__content {
+	box-shadow: inset 0 -2px 0 var(--wp--preset--color--accent);
+}
+
+.docmed-header .wp-block-navigation__submenu-container {
+	border: 0;
+	box-shadow: 0 0 10px rgb(0 0 0 / 0.08);
+	padding: 0.625rem;
+}
+
+/* The appointment button is the template's solid blue, not the gradient. */
+.docmed-header__cta > .wp-block-button__link {
+	background: var(--wp--preset--color--primary);
+	padding: 0.75rem 1.5rem;
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 400;
+}
+
+/*
+ * Core switches the navigation to its menu button below 600px; six links and
+ * the button stop fitting on one row at 960px, where the template collapses
+ * too. Below that the row is the mark on the left and the switch and menu
+ * button on the right; the appointment button hides, as in the template.
+ */
+@media (max-width: 959px) {
+	.docmed-header .wp-block-navigation__responsive-container-open:not(.always-shown) {
+		display: flex;
+	}
+
+	.docmed-header .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+		display: none;
+	}
+
+	.docmed-header__row > .docmed-nav {
+		order: 3;
+	}
+
+	.docmed-header .wp-block-button.docmed-header__cta {
+		display: none;
+	}
+
+	.docmed-header__row > .wp-block-buttons {
+		margin-left: auto;
+	}
+
+	.docmed-header .wp-block-navigation__responsive-container-open {
+		color: var(--wp--preset--color--primary);
+	}
+
+	.docmed-header .wp-block-navigation__responsive-container-open svg {
+		width: 28px;
+		height: 28px;
+	}
+
+	.docmed-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content {
+		font-size: 1rem;
+		padding: 0.35rem 0;
+	}
+}
+
+/* ==========================================================================
+   The dark-mode switch (inc/scheme.php). Here rather than in scheme.css so
+   the editor, which loads this file, draws it as the icon it is.
+   ========================================================================== */
+
+.wp-block-button.docmed-scheme-toggle > .wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 0;
+	padding: 0;
+	width: 44px;
+	height: 44px;
+	min-width: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: var(--wp--preset--color--contrast);
+}
+
+.wp-block-button.docmed-scheme-toggle > .wp-block-button__link:hover,
+.wp-block-button.docmed-scheme-toggle > .wp-block-button__link:focus-visible {
+	background: color-mix(in srgb, currentColor 10%, transparent);
+	color: var(--wp--preset--color--primary);
+}
+
+.wp-block-button.docmed-scheme-toggle > .wp-block-button__link::before {
+	content: "";
+	width: 1.1rem;
+	height: 1.1rem;
+	flex: 0 0 auto;
+	background-color: currentColor;
+	/* A moon, and a sun in dark mode, masked so they take the button's colour. */
+	-webkit-mask: var(--docmed-scheme-icon) center / contain no-repeat;
+	mask: var(--docmed-scheme-icon) center / contain no-repeat;
+	--docmed-scheme-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   Icons
+
+   Tabler Icons, used as masks: the SVG supplies the shape and the element's
+   own colour fills it, so an icon takes whatever palette is active and turns
+   over in dark mode with no extra files. Each name sets --docmed-icon, so
+   the class can sit on a paragraph block without masking the paragraph.
+   ========================================================================== */
+
+.docmed-icon--mail { --docmed-icon: url("assets/icons/mail.svg"); }
+.docmed-icon--phone { --docmed-icon: url("assets/icons/phone.svg"); }
+.docmed-icon--phone-call { --docmed-icon: url("assets/icons/phone-call.svg"); }
+.docmed-icon--map-pin { --docmed-icon: url("assets/icons/map-pin.svg"); }
+.docmed-icon--clock { --docmed-icon: url("assets/icons/clock.svg"); }
+.docmed-icon--stethoscope { --docmed-icon: url("assets/icons/stethoscope.svg"); }
+.docmed-icon--first-aid-kit { --docmed-icon: url("assets/icons/first-aid-kit.svg"); }
+.docmed-icon--calendar-event { --docmed-icon: url("assets/icons/calendar-event.svg"); }
+.docmed-icon--quote { --docmed-icon: url("assets/icons/quote.svg"); }
+
+/* ==========================================================================
+   Titles
+   ========================================================================== */
+
+/* Title with bar (block style: heading › Title with bar): the template's
+   section title, a short light-blue bar beneath it. */
+.is-style-docmed-bar {
+	position: relative;
+	padding-bottom: 0.9375rem;
+}
+
+.is-style-docmed-bar::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 3.125rem;
+	height: 2px;
+	background-color: var(--wp--preset--color--accent);
+}
+
+.is-style-docmed-bar.has-text-align-center::after {
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.is-style-docmed-bar.has-text-align-right::after {
+	left: auto;
+	right: 0;
+}
+
+/* Underlined kicker (block style: heading › Underlined kicker): the small
+   "Welcome to Docmed" above the welcome heading. */
+.is-style-docmed-kicker {
+	position: relative;
+	padding-bottom: 0.5625rem;
+	font-size: 1.125rem !important;
+	font-weight: 400;
+	line-height: 1.4;
+}
+
+.is-style-docmed-kicker::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 3.125rem;
+	height: 2px;
+	background-color: var(--wp--preset--color--accent);
+}
+
+.docmed-section-head {
+	margin-bottom: var(--wp--preset--spacing--60);
+}
+
+.docmed-section-head > * {
+	margin-block: 0;
+}
+
+.docmed-section-head > * + * {
+	margin-top: 1.25rem;
+}
+
+/* ==========================================================================
+   Buttons
+
+   The default button is the template's gradient in its readable shades (from
+   theme.json). On hover it does what the template's does: the fill drops away
+   and a blue outline and blue words are left.
+   ========================================================================== */
+
+.wp-block-button__link,
+.wp-element-button {
+	transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.wp-block-button:not(.docmed-scheme-toggle):not([class*="is-style-docmed-"]) > .wp-block-button__link:hover,
+.wp-block-button:not(.docmed-scheme-toggle):not([class*="is-style-docmed-"]) > .wp-block-button__link:focus-visible,
+.docmed-form__actions .wp-element-button:hover,
+.docmed-form__actions .wp-element-button:focus-visible {
+	background: var(--wp--preset--color--base);
+	border-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--primary);
+}
+
+/* Outline on colour (block style: button › Outline (on colour)) — the
+   template's white-bordered buttons on the blue band and the photographs. */
+.wp-block-button.is-style-docmed-outline > .wp-block-button__link {
+	padding: 0.4rem 1.5rem;
+	background: transparent;
+	border-color: currentColor;
+	color: inherit;
+	font-weight: 400;
+	border-radius: 5px;
+}
+
+.wp-block-button.is-style-docmed-outline > .wp-block-button__link:hover,
+.wp-block-button.is-style-docmed-outline > .wp-block-button__link:focus-visible {
+	background: var(--wp--preset--color--base);
+	border-color: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--primary);
+}
+
+/* Outline (block style: button › Outline) — "Learn More" on the page. */
+.wp-block-button.is-style-docmed-ghost > .wp-block-button__link {
+	padding: 0.5rem 1.5rem;
+	background: transparent;
+	border-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--primary);
+	font-weight: 400;
+	border-radius: 5px;
+}
+
+.wp-block-button.is-style-docmed-ghost > .wp-block-button__link:hover,
+.wp-block-button.is-style-docmed-ghost > .wp-block-button__link:focus-visible {
+	background: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--on-primary);
+}
+
+.wp-block-button.docmed-pill > .wp-block-button__link {
+	border-radius: 999px;
+	padding: 0.5rem 1.5rem;
+}
+
+/* ==========================================================================
+   Hero
+
+   The doctor stands in the right third of a pale studio photograph and the
+   words sit on the quiet left, dark on light, as in the template. The cover
+   pins the photograph's right edge on a wide screen; below 1024px the doctor's
+   face is kept at the top and the words move to the bottom, clear of it
+   (measured at 1440, 1280, 1024, 820 and 390).
+   ========================================================================== */
+
+.wp-block-cover.docmed-hero {
+	min-height: clamp(34rem, 48vw, 43.75rem) !important;
+	padding-top: var(--wp--preset--spacing--70);
+	padding-bottom: var(--wp--preset--spacing--70);
+}
+
+.docmed-hero .wp-block-cover__image-background {
+	object-position: 100% 30% !important;
+}
+
+/* The words line up with the page's content edge, not the screen's. */
+.wp-block-cover.docmed-hero,
+.wp-block-cover.docmed-banner {
+	padding-left: var(--wp--style--root--padding-left, 1.5rem);
+	padding-right: var(--wp--style--root--padding-right, 1.5rem);
+}
+
+.docmed-hero .wp-block-cover__inner-container,
+.docmed-banner .wp-block-cover__inner-container {
+	/* Core gives a positioned cover's content `width: auto` with a
+	   four-class selector. */
+	width: 100% !important;
+	max-width: var(--wp--style--global--content-size);
+	margin-inline: auto !important;
+}
+
+.docmed-banner .wp-block-cover__inner-container > .wp-block-group > * {
+	margin-left: 0 !important;
+}
+
+.docmed-hero__words {
+	max-width: min(38.75rem, 46vw);
+	margin-left: 0 !important;
+}
+
+.docmed-hero__words > * {
+	margin-block: 0;
+}
+
+.docmed-hero__words > * + * {
+	margin-top: 1.5rem;
+}
+
+.docmed-hero__words > .wp-block-buttons {
+	margin-top: 2.5rem;
+}
+
+.docmed-hero__title {
+	font-weight: 300;
+	letter-spacing: 0.03em;
+	line-height: 1.15;
+}
+
+.docmed-hero__title strong {
+	font-weight: 700;
+}
+
+.docmed-hero__text {
+	font-size: 1.125rem;
+}
+
+/* On the pale photograph the gradient's light end is 3:1 at best against the
+   backdrop; the button takes the deep `wash`, which stays deep in every
+   palette and in dark mode (WCAG 1.4.11). */
+.docmed-hero .wp-block-button:not([class*="is-style-docmed-"]) > .wp-block-button__link {
+	background: var(--wp--preset--color--wash);
+	color: var(--wp--preset--color--overlay);
+}
+
+.docmed-hero .wp-block-button:not([class*="is-style-docmed-"]) > .wp-block-button__link:hover,
+.docmed-hero .wp-block-button:not([class*="is-style-docmed-"]) > .wp-block-button__link:focus-visible {
+	background: var(--wp--preset--color--overlay);
+	border-color: var(--wp--preset--color--wash);
+	color: var(--wp--preset--color--wash);
+}
+
+@media (max-width: 1023px) {
+	/* The photograph takes the top of the hero and fades into its own
+	   backdrop colour, and the words sit on that ground beneath the doctor's
+	   face instead of across it. The colour is the studio backdrop's, sampled
+	   from hero.webp: it belongs to the photograph, not to the palette. */
+	.wp-block-cover.docmed-hero.docmed-hero {
+		min-height: 44rem !important;
+		align-items: flex-end;
+		padding-bottom: var(--wp--preset--spacing--50);
+		background-color: #b5c2c8;
+	}
+
+	.docmed-hero .wp-block-cover__image-background.wp-block-cover__image-background {
+		height: 54% !important;
+		object-position: 72% 30% !important;
+		-webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
+		mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
+	}
+
+	.docmed-hero__words {
+		max-width: none;
+	}
+
+	.docmed-hero__title br {
+		display: none;
+	}
+
+	.docmed-hero__text {
+		font-size: 1rem;
+	}
+}
+
+/* ==========================================================================
+   Service band: three cells on the brand blue, the middle one deeper
+   ========================================================================== */
+
+.docmed-band {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.docmed-band__row > .wp-block-column {
+	display: flex;
+}
+
+.docmed-band__cell {
+	padding: 2.5rem 1.875rem;
+}
+
+.docmed-band__cell > * {
+	margin-block: 0;
+}
+
+.docmed-band__cell > * + * {
+	margin-top: 1rem;
+}
+
+.docmed-band__cell > .wp-block-buttons {
+	margin-top: 1.625rem;
+}
+
+.docmed-band__icon {
+	margin-left: 0 !important;
+	width: 3.125rem;
+	height: 3.125rem;
+}
+
+.docmed-band__icon::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: currentColor;
+	-webkit-mask: var(--docmed-icon) center / contain no-repeat;
+	mask: var(--docmed-icon) center / contain no-repeat;
+}
+
+.docmed-band__title {
+	font-size: 1.625rem;
+}
+
+@media (max-width: 781px) {
+	.docmed-band__row > .wp-block-column {
+		flex-basis: 100% !important;
+	}
+}
+
+/* ==========================================================================
+   Welcome: two photographs, the second over the corner of the first
+   ========================================================================== */
+
+.docmed-welcome__photos {
+	position: relative;
+	padding-bottom: 5.875rem;
+}
+
+.docmed-welcome__photos > .wp-block-image {
+	margin: 0;
+}
+
+.docmed-welcome__one {
+	width: 60%;
+}
+
+.docmed-welcome__two {
+	position: absolute;
+	right: 8%;
+	bottom: 0;
+	width: 50%;
+}
+
+.docmed-welcome__photos img {
+	width: 100%;
+}
+
+.docmed-welcome__text > .wp-block-group > * {
+	margin-block: 0;
+}
+
+.docmed-welcome__text > .wp-block-group > * + * {
+	margin-top: 1rem;
+}
+
+.docmed-welcome__text .is-style-docmed-kicker {
+	margin-bottom: 1.5rem;
+}
+
+.docmed-welcome__text .wp-block-buttons {
+	margin-top: 2.25rem;
+}
+
+@media (max-width: 781px) {
+	.docmed-welcome__title br {
+		display: none;
+	}
+}
+
+/* Ticks (block style: list › Ticks). */
+.is-style-docmed-checks {
+	margin: 1.5rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.is-style-docmed-checks li {
+	position: relative;
+	padding-left: 1.875rem;
+}
+
+.is-style-docmed-checks li + li {
+	margin-top: 0.25rem;
+}
+
+.is-style-docmed-checks li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.3rem;
+	width: 1.125rem;
+	height: 1.125rem;
+	background-color: var(--wp--preset--color--accent);
+	-webkit-mask: url("assets/icons/circle-check.svg") center / contain no-repeat;
+	mask: url("assets/icons/circle-check.svg") center / contain no-repeat;
+}
+
+/* ==========================================================================
+   Card (block style: group › Card) — departments and news
+   ========================================================================== */
+
+.is-style-docmed-card {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--wp--preset--color--base);
+	border-radius: 5px 5px 0 0;
+	box-shadow: var(--wp--preset--shadow--card);
+	overflow: hidden;
+}
+
+.is-style-docmed-card > * {
+	margin-block: 0 !important;
+}
+
+.is-style-docmed-card > .wp-block-image,
+.is-style-docmed-card > .wp-block-post-featured-image {
+	margin: 0;
+	overflow: hidden;
+}
+
+.is-style-docmed-card > .wp-block-image img,
+.is-style-docmed-card > .wp-block-post-featured-image img {
+	width: 100%;
+	transition: transform 0.3s ease;
+}
+
+.is-style-docmed-card:hover > .wp-block-image img,
+.is-style-docmed-card:hover > .wp-block-post-featured-image img {
+	transform: scale(1.1);
+}
+
+.docmed-card__body {
+	flex: 1;
+	padding: 1.375rem 1.875rem 1.5rem;
+}
+
+.docmed-card__body > * {
+	margin-block: 0;
+}
+
+.docmed-card__body > * + * {
+	margin-top: 0.5rem;
+}
+
+.docmed-card__body h3 a,
+.docmed-card__body .wp-block-post-title a {
+	color: var(--wp--preset--color--contrast);
+	text-decoration: none;
+}
+
+.docmed-card__body h3 a:hover,
+.docmed-card__body h3 a:focus-visible,
+.docmed-card__body .wp-block-post-title a:hover {
+	color: var(--wp--preset--color--primary);
+}
+
+.docmed-more a {
+	text-decoration: none;
+}
+
+.docmed-more a:hover,
+.docmed-more a:focus-visible {
+	text-decoration: underline;
+}
+
+/* ==========================================================================
+   Reviews over a photograph
+   ========================================================================== */
+
+.docmed-review__quote {
+	width: 2.5rem;
+	height: 2.5rem;
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+.docmed-review__quote::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	background-color: currentColor;
+	-webkit-mask: var(--docmed-icon) center / contain no-repeat;
+	mask: var(--docmed-icon) center / contain no-repeat;
+}
+
+.docmed-review__text {
+	font-size: 1.25rem;
+	line-height: 1.6;
+	font-weight: 500;
+}
+
+.docmed-review__name {
+	position: relative;
+	padding-top: 1.3rem;
+	font-size: var(--wp--preset--font-size--x-small);
+	font-weight: 500;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+.docmed-review__name::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 3.75rem;
+	height: 2px;
+	background-color: currentColor;
+	transform: translateX(-50%);
+}
+
+/* The slider: a scroll-snap strip, one slide to a screen. The dots are
+   buttons the script adds. */
+.docmed-slider {
+	display: flex;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+	gap: 0;
+}
+
+.docmed-slider::-webkit-scrollbar {
+	display: none;
+}
+
+.docmed-slider > .docmed-slide {
+	flex: 0 0 100%;
+	scroll-snap-align: start;
+	margin: 0 !important;
+}
+
+.docmed-slide > * {
+	margin-block: 0;
+}
+
+.docmed-slide > * + * {
+	margin-top: 2.25rem;
+}
+
+.docmed-slider__dots {
+	display: flex;
+	justify-content: center;
+	gap: 0.625rem;
+	margin-top: 2rem;
+}
+
+.docmed-slider__dot {
+	width: 0.75rem;
+	height: 0.75rem;
+	padding: 0;
+	border: 1px solid var(--wp--preset--color--overlay);
+	border-radius: 50%;
+	background: transparent;
+	cursor: pointer;
+}
+
+.docmed-slider__dot[aria-current="true"] {
+	background: var(--wp--preset--color--overlay);
+}
+
+/* ==========================================================================
+   Tabs: three labels on a pale bar, one panel at a time
+   ========================================================================== */
+
+.docmed-tabs > * {
+	margin-block: 0;
+}
+
+.docmed-tabs__bar {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.docmed-tabs__list > * {
+	flex: 1 1 0;
+	margin: 0;
+}
+
+.docmed-tab {
+	padding: 2.1875rem 0 2.1875rem 2.5rem;
+	font-size: var(--wp--preset--font-size--large);
+	color: var(--wp--preset--color--contrast);
+	line-height: 1.4;
+	text-align: left;
+}
+
+button.docmed-tab {
+	font-family: inherit;
+	font-weight: 400;
+	background: transparent;
+	border: 0;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+button.docmed-tab[aria-selected="true"] {
+	background-color: var(--wp--preset--color--base);
+}
+
+button.docmed-tab:hover,
+button.docmed-tab:focus-visible {
+	color: var(--wp--preset--color--primary);
+}
+
+.docmed-tabs__panels {
+	border-bottom: 1px solid var(--wp--preset--color--divider);
+}
+
+.docmed-tabs__panel + .docmed-tabs__panel {
+	margin-top: var(--wp--preset--spacing--70);
+}
+
+.docmed-tabs.is-tabbed .docmed-tabs__panel + .docmed-tabs__panel {
+	margin-top: 0;
+}
+
+.docmed-tabs__panel[hidden] {
+	display: none !important;
+}
+
+.docmed-tabs__panel .wp-block-image {
+	margin: 0;
+}
+
+.docmed-tabs__icon {
+	margin-left: 0 !important;
+	display: grid;
+	place-items: center;
+	width: 4.6875rem;
+	height: 4.6875rem;
+	margin: 0 0 1rem;
+	border-radius: 50%;
+	background-color: var(--wp--preset--color--accent);
+}
+
+.docmed-tabs__icon::before {
+	content: "";
+	width: 2.1rem;
+	height: 2.1rem;
+	background-color: var(--wp--preset--color--overlay);
+	-webkit-mask: var(--docmed-icon) center / contain no-repeat;
+	mask: var(--docmed-icon) center / contain no-repeat;
+}
+
+@media (max-width: 781px) {
+	.docmed-tab {
+		padding: 1.25rem 0.75rem;
+		font-size: var(--wp--preset--font-size--small);
+		text-align: center;
+	}
+}
+
+/* ==========================================================================
+   Doctor card (block style: group › Doctor card), the carousel and the grid
+   ========================================================================== */
+
+.is-style-docmed-doctor {
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+}
+
+.is-style-docmed-doctor > * {
+	margin-block: 0 !important;
+}
+
+.is-style-docmed-doctor > .wp-block-image {
+	margin: 0;
+	overflow: hidden;
+}
+
+.is-style-docmed-doctor > .wp-block-image img {
+	width: 100%;
+	transition: transform 0.3s ease;
+}
+
+.is-style-docmed-doctor:hover > .wp-block-image img {
+	transform: scale(1.03);
+}
+
+.docmed-doctor__name {
+	padding: 1rem 0.75rem 1.125rem;
+	background-color: var(--wp--preset--color--surface);
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.docmed-doctor__name > * {
+	margin-block: 0;
+}
+
+.docmed-doctor__name > * + * {
+	margin-top: 0.125rem;
+}
+
+.docmed-doctor__role {
+	color: var(--wp--preset--color--muted);
+}
+
+/* On hover the name panel fills with blue, as the template's. */
+.is-style-docmed-doctor:hover .docmed-doctor__name {
+	background-color: var(--wp--preset--color--primary);
+}
+
+.is-style-docmed-doctor:hover .docmed-doctor__name > * {
+	color: var(--wp--preset--color--on-primary) !important;
+}
+
+.docmed-carousel {
+	display: flex;
+	gap: 1.875rem;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+	scrollbar-width: none;
+	margin-block: 0;
+}
+
+.docmed-carousel::-webkit-scrollbar {
+	display: none;
+}
+
+.docmed-carousel > .is-style-docmed-doctor {
+	flex: 0 0 calc((100% - 3 * 1.875rem) / 4);
+	margin: 0 !important;
+	scroll-snap-align: start;
+}
+
+@media (max-width: 1023px) {
+	.docmed-carousel > .is-style-docmed-doctor {
+		flex-basis: calc((100% - 1.875rem) / 2);
+	}
+}
+
+@media (max-width: 599px) {
+	.docmed-carousel > .is-style-docmed-doctor {
+		flex-basis: 78%;
+	}
+}
+
+/* The arrows sit over the portraits' left and right edges, as the
+   template's swiper arrows. */
+.has-docmed-carousel {
+	position: relative;
+}
+
+.docmed-carousel__arrows {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	pointer-events: none;
+}
+
+.docmed-carousel__arrows[hidden] {
+	display: none;
+}
+
+.docmed-carousel__arrow {
+	position: absolute;
+	top: calc(50% + 1.5rem);
+	width: 2.75rem;
+	height: 2.75rem;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background-color: color-mix(in srgb, var(--wp--preset--color--base) 88%, transparent);
+	color: var(--wp--preset--color--primary);
+	box-shadow: 0 2px 10px rgb(0 0 0 / 0.12);
+	cursor: pointer;
+	pointer-events: auto;
+	display: grid;
+	place-items: center;
+}
+
+.docmed-carousel__arrow::before {
+	content: "";
+	width: 1.5rem;
+	height: 1.5rem;
+	background-color: currentColor;
+	-webkit-mask: url("assets/icons/chevron-left.svg") center / contain no-repeat;
+	mask: url("assets/icons/chevron-left.svg") center / contain no-repeat;
+}
+
+.docmed-carousel__arrow--prev {
+	left: 0.75rem;
+}
+
+.docmed-carousel__arrow--next {
+	right: 0.75rem;
+}
+
+.docmed-carousel__arrow--next::before {
+	-webkit-mask-image: url("assets/icons/chevron-right.svg");
+	mask-image: url("assets/icons/chevron-right.svg");
+}
+
+.docmed-carousel__arrow:disabled {
+	opacity: 0;
+	cursor: default;
+}
+
+.docmed-carousel__arrow:hover,
+.docmed-carousel__arrow:focus-visible {
+	background-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--on-primary);
+}
+
+/* ==========================================================================
+   Appointment band: two halves on blue-washed photographs
+   ========================================================================== */
+
+.docmed-split__wrap {
+	margin-block: 0;
+}
+
+.docmed-split > .wp-block-column {
+	display: flex;
+}
+
+.docmed-split__half.wp-block-cover {
+	width: 100%;
+	padding: 2.5rem;
+}
+
+/* Under the blue wash the photograph is only texture: darkened and without
+   colour, so its brightest pixels cannot pull white words under AA. */
+.docmed-split__half .wp-block-cover__image-background {
+	filter: grayscale(1) brightness(0.6);
+}
+
+.docmed-split__words > * {
+	margin-block: 0;
+}
+
+.docmed-split__words > * + * {
+	margin-top: 0.25rem;
+}
+
+@media (max-width: 781px) {
+	.docmed-split > .wp-block-column {
+		flex-basis: 100% !important;
+	}
+
+	.docmed-split__row {
+		justify-content: flex-start !important;
+	}
+}
+
+/* ==========================================================================
+   Appointment section, contact details
+   ========================================================================== */
+
+.is-style-docmed-form-box {
+	padding: clamp(1.5rem, 4vw, 3.75rem) clamp(1.25rem, 3vw, 2.5rem);
+	background-color: var(--wp--preset--color--base);
+	box-shadow: var(--wp--preset--shadow--card);
+}
+
+.docmed-info {
+	position: relative;
+	margin-bottom: 0;
+	padding-left: 3rem;
+	line-height: 1.6;
+}
+
+.docmed-info strong {
+	color: var(--wp--preset--color--contrast);
+	font-weight: 500;
+}
+
+.docmed-info::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.2rem;
+	width: 1.6rem;
+	height: 1.6rem;
+	background-color: var(--wp--preset--color--muted);
+	-webkit-mask: var(--docmed-icon) center / contain no-repeat;
+	mask: var(--docmed-icon) center / contain no-repeat;
+}
+
+.docmed-info a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.docmed-info a:hover,
+.docmed-info a:focus-visible {
+	color: var(--wp--preset--color--primary);
+}
+
+.docmed-note {
+	padding: 0.85rem 1.1rem;
+	border-left: 3px solid var(--wp--preset--color--accent);
+	background-color: var(--wp--preset--color--base);
+}
+
+/* ==========================================================================
+   The appointment dialog (inc/appointment.php, opened by interactions.js)
+   ========================================================================== */
+
+.docmed-dialog {
+	width: min(42.5rem, calc(100vw - 2rem));
+	max-height: calc(100dvh - 2rem);
+	padding: 0;
+	border: 0;
+	background: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--muted);
+	box-shadow: 0 20px 60px rgb(0 0 0 / 0.3);
+}
+
+.docmed-dialog::backdrop {
+	background: rgb(0 0 0 / 0.6);
+}
+
+.docmed-dialog__box {
+	position: relative;
+	padding: clamp(1.5rem, 5vw, 3.75rem) clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.docmed-dialog__title {
+	margin: 0 0 2rem;
+	text-align: center;
+	font-size: var(--wp--preset--font-size--x-large);
+	color: var(--wp--preset--color--primary);
+}
+
+.docmed-dialog__close {
+	position: absolute;
+	top: 0.75rem;
+	right: 0.75rem;
+	width: 2.75rem;
+	height: 2.75rem;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: var(--wp--preset--color--contrast);
+	cursor: pointer;
+}
+
+.docmed-dialog__close::before,
+.docmed-dialog__close::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 1.25rem;
+	height: 2px;
+	background-color: currentColor;
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.docmed-dialog__close::after {
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.docmed-dialog__close:hover,
+.docmed-dialog__close:focus-visible {
+	background-color: var(--wp--preset--color--surface);
+}
+
+/* ==========================================================================
+   Page banner: the template's blue wash from the left over a photograph
+   ========================================================================== */
+
+.docmed-banner .wp-block-cover__inner-container > .wp-block-group > * {
+	margin-block: 0;
+}
+
+.docmed-banner .wp-block-post-title,
+.docmed-banner .wp-block-query-title,
+.docmed-banner h1 {
+	/* A long post title wraps inside the blue half rather than running on
+	   over the photograph's face. */
+	max-width: min(40rem, 52%) !important;
+	font-size: var(--wp--preset--font-size--display);
+	font-weight: 600;
+}
+
+@media (max-width: 781px) {
+	.docmed-banner .wp-block-post-title,
+	.docmed-banner .wp-block-query-title,
+	.docmed-banner h1 {
+		max-width: none !important;
+	}
+}
+
+.docmed-breadcrumb {
+	margin-top: 0.5rem !important;
+	font-size: 1.125rem;
+}
+
+.docmed-breadcrumb > * {
+	margin: 0;
+	font-size: inherit !important;
+	font-weight: 400 !important;
+	font-family: inherit !important;
+	line-height: 1.6 !important;
+}
+
+.docmed-breadcrumb__home::after {
+	content: " /";
+}
+
+.docmed-breadcrumb a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.docmed-breadcrumb a:hover,
+.docmed-breadcrumb a:focus-visible {
+	text-decoration: underline;
+}
+
+@media (max-width: 781px) {
+	.docmed-banner.wp-block-cover {
+		min-height: 15rem !important;
+	}
+}
+
+/* ==========================================================================
+   Blog: the post list, the single post and the sidebar
+   ========================================================================== */
+
+.docmed-post {
+	box-shadow: 0 10px 20px rgb(221 221 221 / 0.3);
+}
+
+.docmed-post > * {
+	margin-block: 0;
+}
+
+.docmed-post__media {
+	position: relative;
+}
+
+.docmed-post__media > * {
+	margin-block: 0 !important;
+}
+
+/* The date sits in a blue square over the photograph's lower-left corner,
+   two lines, as the template's badge. */
+.docmed-date-badge {
+	position: absolute;
+	left: 1.25rem;
+	bottom: -1.25rem;
+	width: 4.2rem;
+	padding: 0.5rem 0.25rem;
+	background-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--on-primary);
+	font-size: 1.375rem;
+	font-weight: 500;
+	line-height: 1.25;
+	text-align: center;
+	word-spacing: 100vw;
+}
+
+.docmed-date-badge time,
+.docmed-date-badge a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.docmed-post__body {
+	padding: 3rem 1.875rem 1.875rem;
+}
+
+.docmed-post__body > * {
+	margin-block: 0;
+}
+
+.docmed-post__body > * + * {
+	margin-top: 1rem;
+}
+
+.docmed-post__body .wp-block-post-excerpt__excerpt {
+	margin: 0;
+}
+
+.docmed-post__meta {
+	color: var(--wp--preset--color--muted);
+}
+
+.docmed-post__meta a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.docmed-post__meta a:hover {
+	color: var(--wp--preset--color--primary);
+}
+
+.wp-block-post-terms a {
+	text-decoration: none;
+}
+
+/* A category line and a comment count each carry a small icon. */
+.docmed-post-cats,
+.docmed-comments-count,
+.docmed-post__meta .wp-block-post-date,
+.docmed-author {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+}
+
+.docmed-post-cats::before,
+.docmed-comments-count::before,
+.docmed-post__meta .wp-block-post-date::before,
+.docmed-author::before {
+	content: "";
+	flex: none;
+	width: 1em;
+	height: 1em;
+	background-color: currentColor;
+	-webkit-mask: url("assets/icons/user.svg") center / contain no-repeat;
+	mask: url("assets/icons/user.svg") center / contain no-repeat;
+}
+
+.docmed-post-cats::before {
+	-webkit-mask-image: url("assets/icons/stethoscope.svg");
+	mask-image: url("assets/icons/stethoscope.svg");
+}
+
+.docmed-comments-count::before {
+	-webkit-mask-image: url("assets/icons/message.svg");
+	mask-image: url("assets/icons/message.svg");
+}
+
+.docmed-post__meta .wp-block-post-date::before {
+	-webkit-mask-image: url("assets/icons/calendar.svg");
+	mask-image: url("assets/icons/calendar.svg");
+}
+
+.wp-block-query-pagination {
+	gap: 0.5rem;
+	margin-top: var(--wp--preset--spacing--60);
+}
+
+.wp-block-query-pagination a,
+.wp-block-query-pagination .current {
+	display: inline-grid;
+	place-items: center;
+	min-width: 2.5rem;
+	height: 2.5rem;
+	padding: 0 0.6rem;
+	box-sizing: border-box;
+	border: 1px solid var(--wp--preset--color--divider);
+	color: var(--wp--preset--color--contrast);
+	text-decoration: none;
+}
+
+.wp-block-query-pagination .current,
+.wp-block-query-pagination a:hover {
+	background-color: var(--wp--preset--color--primary);
+	border-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--on-primary);
+}
+
+/* The single post's own rhythm: photograph, meta line, then the words. */
+.docmed-article > .wp-block-post-featured-image {
+	margin-bottom: 0;
+}
+
+.docmed-article > .docmed-post__meta {
+	margin-top: 1.5rem;
+}
+
+.docmed-post-tags a {
+	text-decoration: none;
+}
+
+.wp-block-quote {
+	margin-inline: 0;
+}
+
+.wp-block-quote p {
+	font-size: var(--wp--preset--font-size--medium);
+}
+
+.wp-block-quote cite {
+	display: block;
+	margin-top: 0.75rem;
+	color: var(--wp--preset--color--contrast);
+	font-size: var(--wp--preset--font-size--small);
+	font-style: normal;
+	font-weight: 500;
+}
+
+.wp-block-post-navigation-link a {
+	color: var(--wp--preset--color--contrast);
+	font-weight: 500;
+	text-decoration: none;
+}
+
+.wp-block-post-navigation-link a:hover {
+	color: var(--wp--preset--color--primary);
+}
+
+/* Pale panel (block style: group › Pale panel) — the sidebar's widgets. */
+.is-style-docmed-panel {
+	padding: 1.875rem;
+	background-color: var(--wp--preset--color--surface);
+}
+
+.is-style-docmed-panel > * {
+	margin-block: 0;
+}
+
+.is-style-docmed-panel > * + * {
+	margin-top: 1.5rem;
+}
+
+.is-style-docmed-panel ul {
+	margin-bottom: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.docmed-widget__title {
+	position: relative;
+	padding-bottom: 0.9375rem;
+	border-bottom: 1px solid var(--wp--preset--color--divider);
+}
+
+/* Categories with counts: name left, count right, ruled. */
+.docmed-counts li {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.5rem 0;
+	border-bottom: 1px solid var(--wp--preset--color--divider);
+}
+
+.docmed-counts a {
+	color: var(--wp--preset--color--contrast);
+	text-decoration: none;
+}
+
+.docmed-counts a:hover {
+	color: var(--wp--preset--color--primary);
+}
+
+.docmed-recent li {
+	display: flow-root;
+	margin-bottom: 1.25rem;
+}
+
+.docmed-recent li:last-child {
+	margin-bottom: 0;
+}
+
+.docmed-recent .wp-block-latest-posts__featured-image.alignleft {
+	margin: 0 1.25rem 0 0;
+}
+
+.docmed-recent .wp-block-latest-posts__featured-image img {
+	width: 5rem;
+	height: 5rem;
+	object-fit: cover;
+}
+
+.docmed-recent .wp-block-latest-posts__post-title {
+	display: block;
+	color: var(--wp--preset--color--contrast);
+	font-size: var(--wp--preset--font-size--small);
+	font-weight: 500;
+	line-height: 1.5;
+	text-decoration: none;
+}
+
+.docmed-recent .wp-block-latest-posts__post-title:hover {
+	color: var(--wp--preset--color--primary);
+}
+
+.docmed-recent .wp-block-latest-posts__post-date {
+	margin-top: 0.4rem;
+	color: var(--wp--preset--color--muted);
+	font-size: var(--wp--preset--font-size--x-small);
+}
+
+.wp-block-tag-cloud.docmed-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.wp-block-tag-cloud a {
+	margin: 0;
+	padding: 0.3rem 0.8rem;
+	border: 1px solid var(--wp--preset--color--divider);
+	background-color: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--contrast);
+	text-decoration: none;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.wp-block-tag-cloud a:hover,
+.wp-block-tag-cloud a:focus-visible {
+	background-color: var(--wp--preset--color--primary);
+	border-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--on-primary);
+}
+
+.docmed-sidebar .wp-block-search__inside-wrapper {
+	border: 1px solid var(--docmed-edge);
+	padding: 0;
+	background-color: var(--wp--preset--color--base);
+}
+
+.docmed-sidebar .wp-block-search__input {
+	border: 0;
+	background: transparent;
+}
+
+.docmed-sidebar .wp-block-search__button {
+	margin: 0;
+	padding: 0.5rem 0.9rem;
+	background: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--on-primary);
+	border: 0;
+}
+
+.docmed-sidebar .wp-block-search__button:hover,
+.docmed-sidebar .wp-block-search__button:focus-visible {
+	background: var(--wp--preset--color--primary-deep);
+	color: var(--wp--preset--color--on-primary);
+}
+
+/* Comments. */
+.docmed-comments .wp-block-post-comments-form {
+	margin-top: var(--wp--preset--spacing--60);
+}
+
+.docmed-comments .wp-block-comment-template {
+	padding-left: 0;
+}
+
+.docmed-comments .wp-block-comment-template ol {
+	padding-left: var(--wp--preset--spacing--50);
+}
+
+.docmed-comments .wp-block-comment-author-name {
+	color: var(--wp--preset--color--contrast);
+	font-weight: 500;
+}
+
+.docmed-comments .wp-block-comment-author-name a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.docmed-comments .wp-block-comment-date a {
+	color: var(--wp--preset--color--muted);
+	text-decoration: none;
+}
+
+.docmed-reply a {
+	display: inline-block;
+	color: var(--wp--preset--color--muted);
+	font-weight: 500;
+	letter-spacing: 0.05em;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.docmed-reply a:hover,
+.docmed-reply a:focus-visible {
+	color: var(--wp--preset--color--primary);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.docmed-footer {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.docmed-footer > * {
+	margin-block: 0;
+}
+
+.docmed-footer__top .wp-block-column > * {
+	margin-block: 0;
+}
+
+.docmed-footer__top .wp-block-column > * + * {
+	margin-top: 1.5rem;
+}
+
+.docmed-footer__title {
+	font-weight: 400;
+}
+
+.docmed-footer__links {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: 2.625;
+}
+
+.docmed-footer a {
+	color: var(--wp--preset--color--on-dark);
+	text-decoration: none;
+	transition: color 0.25s ease;
+}
+
+.docmed-footer a:hover,
+.docmed-footer a:focus-visible {
+	color: var(--wp--preset--color--overlay);
+	text-decoration: underline;
+}
+
+.docmed-footer__bottom {
+	padding-top: 1.875rem;
+	padding-bottom: 1.875rem;
+	background-color: color-mix(in srgb, var(--wp--preset--color--dark) 40%, black);
+}
+
+.docmed-footer__legal {
+	margin: 0;
+}
+
+.docmed-footer__legal a {
+	color: var(--wp--preset--color--overlay);
+	text-decoration: underline;
+}
+
+/* Squares (block style: social links › Squares): the template's grey tiles. */
+.wp-block-social-links.is-style-docmed-squares {
+	gap: 0.5rem;
+}
+
+.wp-block-social-links.is-style-docmed-squares .wp-social-link.wp-block-social-link {
+	border-radius: 4px;
+	background-color: color-mix(in srgb, var(--wp--preset--color--on-dark) 40%, var(--wp--preset--color--dark));
+	color: var(--wp--preset--color--overlay);
+	transition: background-color 0.3s ease;
+}
+
+.wp-block-social-links.is-style-docmed-squares .wp-social-link.wp-block-social-link:hover,
+.wp-block-social-links.is-style-docmed-squares .wp-social-link.wp-block-social-link:focus-within {
+	background-color: var(--wp--preset--color--primary);
+	color: var(--wp--preset--color--on-primary);
+	transform: none;
+}
+
+.wp-block-social-links.is-style-docmed-squares .wp-social-link a {
+	padding: 0.9rem;
+	color: inherit;
+}
+
+.wp-block-social-links.is-style-docmed-squares .wp-social-link svg {
+	width: 1.1rem;
+	height: 1.1rem;
+}
+
+/* Plain icons (block style: social links › Plain icons): the header strip. */
+.wp-block-social-links.is-style-docmed-plain {
+	gap: 0.25rem 0.75rem;
+}
+
+.wp-block-social-links.is-style-docmed-plain .wp-social-link.wp-block-social-link {
+	background: transparent;
+	color: var(--wp--preset--color--muted);
+}
+
+.wp-block-social-links.is-style-docmed-plain .wp-social-link.wp-block-social-link:hover,
+.wp-block-social-links.is-style-docmed-plain .wp-social-link.wp-block-social-link:focus-within {
+	color: var(--wp--preset--color--primary);
+	transform: none;
+}
+
+.wp-block-social-links.is-style-docmed-plain .wp-social-link a {
+	padding: 0.25rem;
+}
+
+/* ==========================================================================
+   Scroll reveals (assets/js/interactions.js)
+
+   Hidden only once the script has run and only for what is below the first
+   screen, so a visitor without JavaScript, a crawler, or anyone looking at the
+   top of the page sees content immediately.
+   ========================================================================== */
+
+.docmed-motion .docmed-reveal {
+	opacity: 0;
+	transform: translate3d(0, 28px, 0);
+	transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+	transition-delay: var(--docmed-reveal-delay, 0ms);
+}
+
+.docmed-motion .docmed-reveal.is-revealed {
+	opacity: 1;
+	transform: none;
+}
+
+/* ==========================================================================
+   Reduced motion: no movement anywhere, content shown at once.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+	.docmed-motion .docmed-reveal {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+
+	.docmed-slider,
+	.docmed-carousel {
+		scroll-behavior: auto;
+	}
+
+	.is-style-docmed-card > .wp-block-image img,
+	.is-style-docmed-card > .wp-block-post-featured-image img,
+	.is-style-docmed-doctor > .wp-block-image img {
+		transition: none;
+		transform: none !important;
+	}
+}

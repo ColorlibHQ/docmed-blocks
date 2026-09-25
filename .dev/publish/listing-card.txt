@@ -1,0 +1,8 @@
+Picker line (the "what are you building" list on /wp/themes/):
+A family clinic or doctors' practice
+
+Card blurb:
+A block theme for family clinics and doctors' practices, with departments, a doctors carousel and an appointment request form that needs no plugin, plus eight colour palettes and dark mode.
+
+Card image: docmed-free-medical-wordpress-theme-card.jpg (1200x900, the home hero)
+Card image alt: Docmed WordPress theme home page hero: a smiling doctor in a white coat and maroon scrubs beside the headline Health Care For the Whole Family
