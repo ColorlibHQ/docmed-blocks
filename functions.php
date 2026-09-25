@@ -13,7 +13,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'DOCMED_VERSION', '1.0.1' );
+define( 'DOCMED_VERSION', '1.0.2' );
 
 /**
  * Theme supports.
